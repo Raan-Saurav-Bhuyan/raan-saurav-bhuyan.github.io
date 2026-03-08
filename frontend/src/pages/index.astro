@@ -22,13 +22,25 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <!-- Blog Preview -->
-        <section id="blog">
+        <section id="blog" class="section-container">
             <BlogPreview />
+
+            <div class="section-footer">
+                <a href="/blog" class="section-link">
+                    View all blog posts →
+                </a>
+            </div>
         </section>
 
         <!-- Research Preview -->
-        <section id="research">
+        <section id="research" class="section-container">
             <ResearchPreview />
+
+            <div class="section-footer">
+                <a href="/projects" class="section-link">
+                    View all research projects →
+                </a>
+            </div>
         </section>
 
         <!-- Field Slideshow -->
@@ -48,11 +60,40 @@ import Footer from "../components/Footer.astro";
     main{
         display:flex;
         flex-direction:column;
-        gap:80px;
+        gap:100px;
     }
 
-    section{
+    /* Section width control */
+
+    .section-container{
+        max-width:1100px;
+        margin:auto;
+        padding:0 20px;
         width:100%;
+    }
+
+    /* Footer link under previews */
+
+    .section-footer{
+        margin-top:30px;
+        text-align:right;
+    }
+
+    /* Link styling */
+
+    .section-link{
+        font-size:.95rem;
+        font-weight:500;
+
+        text-decoration:none;
+
+        color:#2563eb;
+
+        transition:opacity .2s ease;
+    }
+
+    .section-link:hover{
+        opacity:.75;
     }
 
 </style>

@@ -1,16 +1,133 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+    { name: "Research", href: "/projects" },
+    { name: "Blog", href: "/blog" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" }
+];
+---
+
 <nav class="fixed top-0 w-full bg-white/70 backdrop-blur z-50 shadow-sm">
+
     <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
 
+        <!-- Logo / Name -->
         <div class="font-bold text-lg">
-            Raan Saurav Bhuyan
+            <a href="/">Raan Saurav Bhuyan</a>
         </div>
 
-        <div class="space-x-6 text-sm">
-            <a href="/projects" class="hover:text-blue-600">Research</a>
-            <a href="/blog" class="hover:text-blue-600">Blog</a>
-            <a href="/about" class="hover:text-blue-600">About</a>
-            <a href="/contact" class="hover:text-blue-600">Contact</a>
+        <!-- Navigation -->
+        <div class="flex space-x-4 text-sm">
+
+            {links.map(link => {
+
+                const isActive =
+                    currentPath === link.href ||
+                    currentPath.startsWith(link.href + "/");
+
+                return (
+
+                        <a
+                                href={link.href}
+                                class={`nav-link ${isActive ? "active-link" : ""}`}
+                        >
+                            {link.name}
+                        </a>
+
+                );
+
+            })}
+
         </div>
 
     </div>
+
 </nav>
+
+<style>
+
+    .nav-link{
+
+        position:relative;
+
+        padding:8px 16px;
+
+        border-radius:999px;
+
+        font-weight:500;
+
+        text-decoration:none;
+
+        color:#1f2937;
+
+        overflow:hidden;
+
+        transition:color .25s ease;
+
+    }
+
+    /* Hover fluid translucent effect */
+
+    .nav-link::before{
+
+        content:"";
+
+        position:absolute;
+
+        inset:0;
+
+        border-radius:999px;
+
+        background:rgba(59,130,246,0.15);
+
+        opacity:0;
+
+        transform:scale(.85);
+
+        transition:
+                opacity .35s ease,
+                transform .35s ease;
+
+    }
+
+    .nav-link:hover::before{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    /* Ensure text stays visible */
+
+    .nav-link span{
+        position:relative;
+        z-index:1;
+    }
+
+    /* Active page button */
+
+    .active-link{
+
+        background:linear-gradient(
+                135deg,
+                #3b82f6,
+                #2563eb
+        );
+
+        color:white;
+
+        box-shadow:
+                0 4px 14px rgba(37,99,235,0.35);
+
+    }
+
+    /* Prevent hover overlay on active button */
+
+    .active-link::before{
+        display:none;
+    }
+
+</style>
