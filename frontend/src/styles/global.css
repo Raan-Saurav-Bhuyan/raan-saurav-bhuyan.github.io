@@ -1,1 +1,164 @@
 @import "tailwindcss";
+
+/* ===============================
+   HERO BACKGROUND
+   =============================== */
+
+.hero-bg{
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+/* ===============================
+   HERO SECTION LAYERING
+   =============================== */
+
+.hero{
+    position: relative;
+}
+
+.hero::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.4),
+            rgba(0,0,0,0.6)
+    );
+}
+
+/* ===============================
+   ICON BUTTONS (GitHub / LinkedIn)
+   =============================== */
+
+.icon-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.6rem 1rem;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.icon-btn:hover{
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   CARD STYLING (BLOG / PROJECTS)
+   =============================== */
+
+.card{
+    padding: 1.5rem;
+
+    border-radius: 1rem;
+
+    background: white;
+
+    box-shadow:
+            0 10px 25px rgba(0,0,0,0.08);
+
+    transition: all 0.3s ease;
+}
+
+.card:hover{
+    transform: translateY(-6px);
+
+    box-shadow:
+            0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ===============================
+   FADE-IN SCROLL ANIMATION
+   =============================== */
+
+.fade-in{
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+}
+
+.fade-in.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===============================
+   HORIZONTAL SLIDESHOW
+   =============================== */
+
+.horizontal-scroll{
+    display: flex;
+
+    width: max-content;
+
+    gap: 4rem;
+
+    transition: transform 0.25s ease;
+}
+
+.slide{
+    min-width:420px;
+    height:260px;
+    padding:2rem;
+    border-radius:1rem;
+    display:flex;
+    align-items:end;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+
+footer{
+    font-size: 0.9rem;
+}
+
+/* ===============================
+   SMOOTH SCROLL
+   =============================== */
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* ===============================
+   GLOBAL BODY IMPROVEMENTS
+   =============================== */
+
+body{
+    color: #1f2937;
+    background: #f9fafb;
+    font-family:
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
+}
+
+.fade-in:nth-child(1){ transition-delay:0.1s; }
+.fade-in:nth-child(2){ transition-delay:0.2s; }
+.fade-in:nth-child(3){ transition-delay:0.3s; }

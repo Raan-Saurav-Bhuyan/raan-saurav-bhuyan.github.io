@@ -1,15 +1,58 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/MainLayout.astro";
+
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import BlogPreview from "../components/BlogPreview.astro";
+import ResearchPreview from "../components/ResearchPreview.astro";
+import FieldSlideshow from "../components/FieldSlideshow.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout title="Home">
+<Layout>
 
-    <h1 class="text-3xl font-bold mb-4">
-        Raan Saurav Bhuyan
-    </h1>
+    <!-- Navigation -->
+    <Navbar />
 
-    <p class="text-lg text-gray-700">
-        AI & Machine Learning Researcher exploring neural networks, time-series econometrics, and computational modeling.
-    </p>
+    <main>
 
-</BaseLayout>
+        <!-- Hero Section -->
+        <section id="home">
+            <Hero />
+        </section>
+
+        <!-- Blog Preview -->
+        <section id="blog">
+            <BlogPreview />
+        </section>
+
+        <!-- Research Preview -->
+        <section id="research">
+            <ResearchPreview />
+        </section>
+
+        <!-- Field Slideshow -->
+        <section id="fields">
+            <FieldSlideshow />
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+
+</Layout>
+
+<style>
+
+    main{
+        display:flex;
+        flex-direction:column;
+        gap:80px;
+    }
+
+    section{
+        width:100%;
+    }
+
+</style>

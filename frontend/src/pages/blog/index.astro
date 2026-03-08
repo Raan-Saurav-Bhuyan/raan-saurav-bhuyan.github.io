@@ -1,27 +1,47 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/MainLayout.astro";
 
-const posts = await getCollection("posts");
+const posts = (await getCollection("blog"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="Blog">
+<Layout>
 
-    <h1 class="text-3xl font-bold mb-6">
-        Blog
-    </h1>
+    <section class="max-w-4xl mx-auto py-24 px-6">
 
-    <ul class="space-y-6">
-        {posts.map(post => (
-                <li>
-                    <a href={`/blog/${post.slug}`} class="text-xl font-semibold text-blue-600">
-                        {post.data.title}
-                    </a>
-                    <p class="text-gray-600">
-                        {post.data.description}
-                    </p>
-                </li>
-        ))}
-    </ul>
+        <h1 class="text-4xl font-bold mb-12 text-center">
+            Blog
+        </h1>
 
-</BaseLayout>
+        <div class="space-y-10">
+
+            {posts.map((post) => (
+
+                    <article class="card fade-in">
+
+                        <a href={`/blog/${post.slug}`}>
+
+                            <h2 class="text-2xl font-semibold mb-2">
+                                {post.data.title}
+                            </h2>
+
+                        </a>
+
+                        <p class="text-gray-600 mb-3">
+                            {post.data.description}
+                        </p>
+
+                        <p class="text-sm text-gray-400">
+                            {post.data.pubDate.toDateString()}
+                        </p>
+
+                    </article>
+
+            ))}
+
+        </div>
+
+    </section>
+
+</Layout>
