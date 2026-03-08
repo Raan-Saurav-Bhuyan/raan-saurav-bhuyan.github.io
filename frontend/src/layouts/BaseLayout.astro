@@ -1,0 +1,40 @@
+---
+const { title = "Raan Saurav Bhuyan" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+<header class="border-b">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between">
+        <a href="/" class="font-semibold text-lg">
+            Raan Saurav Bhuyan
+        </a>
+
+        <nav class="space-x-6 text-sm">
+            <a href="/about">About</a>
+            <a href="/projects">Projects</a>
+            <a href="/blog">Blog</a>
+        </nav>
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <slot />
+</main>
+
+<footer class="border-t mt-16">
+    <div class="max-w-4xl mx-auto px-4 py-6 text-sm text-gray-500">
+        © 2026 Raan Saurav Bhuyan
+    </div>
+</footer>
+
+</body>
+</html>
